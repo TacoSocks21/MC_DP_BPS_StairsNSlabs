@@ -1,0 +1,1 @@
+tellraw @a {"text": "Block, Paper Scissors: Stairs and Slabs data pack has loaded"}
