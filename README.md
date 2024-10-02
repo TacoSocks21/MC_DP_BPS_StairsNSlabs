@@ -50,7 +50,7 @@ Because of my custom recipes for stairs, I had to change pressure plate crafting
 
 | Ingredients | Stonecutting Recipe | Result |
 |:---:|:---:|:---:|
-| Any `1` `block/planks` | ![stair from block recipe](./images/pressure_plate_stonecutting.png) | `9` respective `pressure plates` |
+| Any `1` `block/planks` | ![pressure plate from block stonecutting recipe](./images/pressure_plate_stonecutting.png) | `9` respective `pressure plates` |
 
 ---
 
