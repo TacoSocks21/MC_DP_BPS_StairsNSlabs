@@ -1,7 +1,5 @@
 # Block, Paper, Scissors: Stairs & Slabs
 
----
-
 ## Minecraft Data Pack
 
 This data pack aims to make stairs and slabs less of a hassel by creating a cyclical relationship between blocks, stairs, and slabs, hence the "Block, Paper, Scissors" title, as well as making these recipes accessible for inventory crafting. This applies to all blocks with stair and slab variants:
