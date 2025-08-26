@@ -149,6 +149,7 @@ for item_type, item_list in custom_recipe_items.items():
                 else:
                     recipe_file_name = item + '_' + recipe_type
             else:
+                recipe["group"] = f"{item}_{recipe_type.split('_')[0]}"
                 recipe_file_name = item + '_' + recipe_type
 
             # Set dictionary key order for resulting JSON data
