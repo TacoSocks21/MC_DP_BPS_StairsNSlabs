@@ -6,115 +6,115 @@ datapack_namespace = "bps_stairs_and_slabs"
 # Master list of all items that need custom recipes
 custom_recipe_items = {
     "wooden": [
-        'acacia',
-        'bamboo',
-        'birch',
-        'cherry',
-        'crimson',
-        'dark_oak',
-        'jungle',
-        'mangrove',
-        'oak',
-        'spruce',
-        'warped'
+        "acacia",
+        "bamboo",
+        "birch",
+        "cherry",
+        "crimson",
+        "dark_oak",
+        "jungle",
+        "mangrove",
+        "oak",
+        "spruce",
+        "warped"
     ],
     "non-wooden": [
-        'andesite',
-        'bamboo_mosaic',
-        'blackstone',
-        'brick',
-        'cobblestone',
-        'cobbled_deepslate',
-        'cut_copper',
-        'cut_red_sandstone',
-        'cut_sandstone',
-        'dark_prismarine',
-        'deepslate_brick',
-        'deepslate_tile',
-        'diorite',
-        'end_stone_brick',
-        'exposed_cut_copper',
-        'granite',
-        'mossy_cobblestone',
-        'mossy_stone_brick',
-        'mud_brick',
-        'nether_brick',
-        'oxidized_cut_copper',
-        'polished_andesite',
-        'polished_blackstone',
-        'polished_blackstone_brick',
-        'polished_deepslate',
-        'polished_diorite',
-        'polished_granite',
-        'polished_tuff',
-        'prismarine',
-        'prismarine_brick',
-        'purpur',
-        'quartz',
-        'red_nether_brick',
-        'red_sandstone',
-        'sandstone',
-        'smooth_quartz',
-        'smooth_red_sandstone',
-        'smooth_sandstone',
-        'smooth_stone',
-        'stone',
-        'stone_brick',
-        'tuff',
-        'tuff_brick',
-        'waxed_cut_copper',
-        'waxed_exposed_cut_copper',
-        'waxed_oxidized_cut_copper',
-        'waxed_weathered_cut_copper',
-        'weathered_cut_copper'
+        "andesite",
+        "bamboo_mosaic",
+        "blackstone",
+        "brick",
+        "cobblestone",
+        "cobbled_deepslate",
+        "cut_copper",
+        "cut_red_sandstone",
+        "cut_sandstone",
+        "dark_prismarine",
+        "deepslate_brick",
+        "deepslate_tile",
+        "diorite",
+        "end_stone_brick",
+        "exposed_cut_copper",
+        "granite",
+        "mossy_cobblestone",
+        "mossy_stone_brick",
+        "mud_brick",
+        "nether_brick",
+        "oxidized_cut_copper",
+        "polished_andesite",
+        "polished_blackstone",
+        "polished_blackstone_brick",
+        "polished_deepslate",
+        "polished_diorite",
+        "polished_granite",
+        "polished_tuff",
+        "prismarine",
+        "prismarine_brick",
+        "purpur",
+        "quartz",
+        "red_nether_brick",
+        "red_sandstone",
+        "sandstone",
+        "smooth_quartz",
+        "smooth_red_sandstone",
+        "smooth_sandstone",
+        "smooth_stone",
+        "stone",
+        "stone_brick",
+        "tuff",
+        "tuff_brick",
+        "waxed_cut_copper",
+        "waxed_exposed_cut_copper",
+        "waxed_oxidized_cut_copper",
+        "waxed_weathered_cut_copper",
+        "weathered_cut_copper"
     ]
 }
 
 # Filter list for items with only slab recipes
 slab_only_list = [
-    'cut_red_sandstone',
-    'cut_sandstone',
-    'smooth_stone'
+    "cut_red_sandstone",
+    "cut_sandstone",
+    "smooth_stone"
 ]
 
 # List of items that need vanilla recipes overriden for datapack to work
 minecraft_recipe_overrides = {
-    "pressure_plate" : {
+    "pressure_plate": {
         "wooden": [
-            'acacia',
-            'bamboo',
-            'birch',
-            'cherry',
-            'crimson',
-            'dark_oak',
-            'jungle',
-            'mangrove',
-            'oak',
-            'spruce',
-            'warped'
+            "acacia",
+            "bamboo",
+            "birch",
+            "cherry",
+            "crimson",
+            "dark_oak",
+            "jungle",
+            "mangrove",
+            "oak",
+            "spruce",
+            "warped"
         ],
         "non-wooden": [
-            'polished_blackstone',
-            'stone',
+            "polished_blackstone",
+            "stone",
         ]
     }
 }
 
 # TODO: delete this later
 test_list = {
-    "wooden": ['acacia'],
+    "wooden": ["acacia"],
     "non-wooden": [
-        'brick',
-        'deepslate_tile',
+        "brick",
+        "deepslate_tile",
         "polished_blackstone",
         "purpur",
         "quartz",
         "smooth_stone",
-        'cut_copper',
-        'waxed_exposed_cut_copper',
-        'waxed_oxidized_cut_copper',
-        'waxed_weathered_cut_copper',
-        'weathered_cut_copper'
+        "cut_copper",
+        "waxed_exposed_cut_copper",
+        "waxed_oxidized_cut_copper",
+        "waxed_weathered_cut_copper",
+        "weathered_cut_copper"
     ]
 }
 
@@ -328,14 +328,14 @@ for item_type, item_list in custom_recipe_items.items(): # TODO: change to custo
                 # Set file name using wooden item name and recipe type
                 if recipe_type[-5:] == "block":
                     # Change wording from "block" to "planks" for wooden items
-                    recipe_file_name = item + "_" + recipe_type[:-5] + "planks"
+                    recipe_file_name = item + '_' + recipe_type[:-5] + "planks"
                 elif recipe_type[:5] == "block":
                     # Change wording from "block" to "planks" for wooden items
-                    recipe_file_name = item + "_" + "planks" + recipe_type[5:]
+                    recipe_file_name = item + '_' + "planks" + recipe_type[5:]
                 else:
-                    recipe_file_name = item + "_" + recipe_type
+                    recipe_file_name = item + '_' + recipe_type
             else:
-                recipe_file_name = item + "_" + recipe_type
+                recipe_file_name = item + '_' + recipe_type
             
             # Set dictionary key order for resulting JSON data
             custom_order = ["type", "category", "group", "pattern", "key", "result"]
