@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "building",
+    "group": "wooden_block",
+    "pattern": [
+        "##",
+        "##"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:mangrove_stairs"
+        }
+    },
+    "result": {
+        "id": "minecraft:mangrove_planks",
+        "count": 3
+    }
+}
