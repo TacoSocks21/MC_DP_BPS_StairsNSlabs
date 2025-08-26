@@ -1,8 +1,9 @@
 import json
+from datapack_recipe_creator import get_recipes
 
 # Minecraft version (1.16.5, 1.21.1, etc.)
 # Set each time you want to generate for specific version
-minecraft_version = "1.21.1"
+minecraft_version = "1.21.5"
 
 # Dictionary for data pack format number based on Minecraft version
 pack_format_values = {
@@ -122,237 +123,22 @@ if pack_format_values[minecraft_version] >= 61:
     minecraft_recipe_overrides["pressure_plate"]["wooden"].append("pale_oak")
 
 
-# ****************************************************************************************************
-# RECIPE SYNTAX DEFINITIONS
-# ****************************************************************************************************
-
 # Cycle through item types: wooden and non-wooden
 for item_type, item_list in custom_recipe_items.items():
     # Cycle through each item you want custom recipes for: wood, stone, etc
     for item in item_list:
         # Dictionary to hold the item recipe types and their corresponding JSON data for recipe files
-        recipe_types = {}
+        recipes = get_recipes(
+            item_type, item, pack_format_values, minecraft_version, slab_only_list
+        )
 
-        # **************************************************
-        # 1.21.1 recipe syntax
-        if pack_format_values[minecraft_version] == 48:
-            # Create slab from blocks
-            recipe_types["slab_from_block"] = {
-                "type": "minecraft:crafting_shaped",
-                "category": "building",
-                "pattern": [
-                    "##"
-                ],
-                "key": {
-                    "#": {
-                        "item": f"minecraft:{item}_planks" if item_type == "wooden" else f"minecraft:{item}"
-                    }
-                },
-                "result": {
-                    "id": f"minecraft:{item}_slab",
-                    "count": 4
-                }
-            }
-        # 1.21.5 recipe syntax (removed "item" and switched to array for "key" definitions)
-        elif pack_format_values[minecraft_version] == 71:
-            # Create slab from blocks
-            recipe_types["slab_from_block"] = {
-                "type": "minecraft:crafting_shaped",
-                "category": "building",
-                "pattern": [
-                    "##"
-                ],
-                "key": {
-                    "#": [
-                        f"minecraft:{item}_planks" if item_type == "wooden" else f"minecraft:{item}"
-                    ]
-                },
-                "result": {
-                    "id": f"minecraft:{item}_slab",
-                    "count": 4
-                }
-            }
-
-        # Only add these recipes if item has stair variants
-        if item not in slab_only_list:
-            # **************************************************
-            # Create slab from stairs (only if has stair recipe)
-            recipe_types["slab_from_stairs"] = {
-                "type": "minecraft:crafting_shaped",
-                "category": "building",
-                "pattern": [
-                    "##"
-                ],
-                "key": {
-                    "#": {
-                        "item": f"minecraft:{item}_stairs"
-                    }
-                },
-                "result": {
-                    "id": f"minecraft:{item}_slab",
-                    "count": 3
-                }
-            }
-
-            # **************************************************
-            # Create stairs from block (only if has stair recipe)
-            recipe_types["stairs_from_block"] = {
-                "type": "minecraft:crafting_shaped",
-                "category": "building",
-                "pattern": [
-                    "# ",
-                    "##"
-                ],
-                "key": {
-                    "#": {
-                        "item": f"minecraft:{item}_planks" if item_type == "wooden" else f"minecraft:{item}"
-                    }
-                },
-                "result": {
-                    "id": f"minecraft:{item}_stairs",
-                    "count": 4
-                }
-            }
-
-            # **************************************************
-            # Create stairs from slab (only if has stair recipe)
-            recipe_types["stairs_from_slab"] = {
-                "type": "minecraft:crafting_shaped",
-                "category": "building",
-                "pattern": [
-                    "# ",
-                    "##"
-                ],
-                "key": {
-                    "#": {
-                        "item": f"minecraft:{item}_slab"
-                    }
-                },
-                "result": {
-                    "id": f"minecraft:{item}_stairs",
-                    "count": 2
-                }
-            }
-
-            # **************************************************
-            # Create block from stairs (only if has stair recipe)
-            recipe_types["block_from_stairs"] = {
-                "type": "minecraft:crafting_shaped",
-                "category": "building",
-                "pattern": [
-                    "##",
-                    "##"
-                ],
-                "key": {
-                    "#": {
-                        "item": f"minecraft:{item}_stairs"
-                    }
-                },
-                "result": {
-                    "id": f"minecraft:{item}_planks" if item_type == "wooden" else f"minecraft:{item}",
-                    "count": 3
-                }
-            }
-
-        # **************************************************
-        # Create block from slab
-        recipe_types["block_from_slab"] = {
-            "type": "minecraft:crafting_shaped",
-            "category": "building",
-            "pattern": [
-                "##",
-                "##"
-            ],
-            "key": {
-                "#": {
-                    "item": f"minecraft:{item}_slab"
-                }
-            },
-            "result": {
-                "id": f"minecraft:{item}_planks" if item_type == "wooden" else f"minecraft:{item}",
-                "count": 2
-            }
-        }
-
-        # **************************************************
-        # Create block from wall
-        recipe_types["block_from_slab"] = {
-            "type": "minecraft:crafting_shaped",
-            "category": "building",
-            "pattern": [
-                "##",
-                "##"
-            ],
-            "key": {
-                "#": {
-                    "item": f"minecraft:{item}_slab"
-                }
-            },
-            "result": {
-                "id": f"minecraft:{item}_planks" if item_type == "wooden" else f"minecraft:{item}",
-                "count": 2
-            }
-        }
-
-        # **************************************************
-        # Create block from slab
-        recipe_types["block_from_slab"] = {
-            "type": "minecraft:crafting_shaped",
-            "category": "building",
-            "pattern": [
-                "##",
-                "##"
-            ],
-            "key": {
-                "#": {
-                    "item": f"minecraft:{item}_slab"
-                }
-            },
-            "result": {
-                "id": f"minecraft:{item}_planks" if item_type == "wooden" else f"minecraft:{item}",
-                "count": 2
-            }
-        }
-
-        # **************************************************
-        # Special conditions for purpur and quartz blocks, since all variants make slabs/stairs
-        if item in ["purpur", "quartz"]:
-            # Make purpur/quarts stairs craftable from blocks or pillars
-            recipe_types["stairs_from_block"]["key"]["#"] = [
-                {"item": f"minecraft:{item}_block"},
-                {"item": f"minecraft:{item}_pillar"}
-            ]
-
-            # Make purpur/quarts slabs craftable from blocks or pillars
-            recipe_types["slab_from_block"]["key"]["#"] = [
-                {"item": f"minecraft:{item}_block"},
-                {"item": f"minecraft:{item}_pillar"}
-            ]
-
-            if item == "quartz":
-                # Add chiseled variant for quartz recipes
-                recipe_types["stairs_from_block"]["key"]["#"].append({"item": "minecraft:chiseled_quartz_block"})
-                recipe_types["slab_from_block"]["key"]["#"].append({"item": "minecraft:chiseled_quartz_block"})
-
-            # Append "_block" keyword to recipe result for purpur and quartz items
-            recipe_types["block_from_stairs"]["result"]["id"] = f"minecraft:{item}_block"
-            recipe_types["block_from_slab"]["result"]["id"] = f"minecraft:{item}_block"
-
-        # **************************************************
-        # Append "s" to brick and tile items
-        if item[-5:] == "brick" or item[-4:] == "tile":
-            recipe_types["stairs_from_block"]["key"]["#"]["item"] += "s"
-            recipe_types["slab_from_block"]["key"]["#"]["item"] += "s"
-            recipe_types["block_from_stairs"]["result"]["id"] += "s"
-            recipe_types["block_from_slab"]["result"]["id"] += "s"
-        
         # **************************************************
         # Cycle through recipe types to create files
-        for recipe_type, recipe in recipe_types.items():
+        for recipe_type, recipe in recipes.items():
             if item_type == "wooden":
                 # If item is wooden then add Minecraft recipe group attribute to recipe
                 recipe["group"] = f"wooden_{recipe_type.split('_')[0]}"
-                
+
                 # Set file name using wooden item name and recipe type
                 if recipe_type[-5:] == "block":
                     # Change wording from "block" to "planks" for wooden items
@@ -364,12 +150,14 @@ for item_type, item_list in custom_recipe_items.items():
                     recipe_file_name = item + '_' + recipe_type
             else:
                 recipe_file_name = item + '_' + recipe_type
-            
+
             # Set dictionary key order for resulting JSON data
-            custom_order = ["type", "category", "group", "pattern", "key", "result"]
-            sorted_keys = sorted(recipe.keys(), key=lambda x: custom_order.index(x) if x in custom_order else len(custom_order))
+            custom_order = ["type", "category",
+                            "group", "pattern", "key", "result"]
+            sorted_keys = sorted(recipe.keys(), key=lambda x: custom_order.index(
+                x) if x in custom_order else len(custom_order))
             sorted_recipe = {key: recipe[key] for key in sorted_keys}
-            
+
             # Write to new file/overwrite to existing file
             with open(f"./minecraft_versions/{minecraft_version}/data/{datapack_namespace}/recipe/{recipe_file_name}.json", 'w') as json_file:
                 json.dump(sorted_recipe, json_file, indent=4)
@@ -387,19 +175,34 @@ for item_type, item_list in custom_recipe_items.items():
         # Other vanilla recipe overrides
         if item in minecraft_recipe_overrides["pressure_plate"]["wooden"] or item in minecraft_recipe_overrides["pressure_plate"]["non-wooden"]:
             # My best solution was to switch all vanilla pressure plate recipes to stone cutting, since pressure plates aren't as common to craft
-            recipe_types["pressure_plate"] = {
-                "type": "minecraft:stonecutting",
-                "ingredient": {
-                    "item": f"minecraft:{item}_planks" if item in minecraft_recipe_overrides["pressure_plate"]["wooden"] else f"minecraft:{item}"
-                },
-                "result": {
-                    "id": f"minecraft:{item}_pressure_plate",
-                    "count": 9
+            if pack_format_values[minecraft_version] == 48:
+                # 1.21.1 formatting
+                recipes["pressure_plate"] = {
+                    "type": "minecraft:stonecutting",
+                    "ingredient": {
+                        "item": f"minecraft:{item}_planks" if item in minecraft_recipe_overrides["pressure_plate"]["wooden"] else f"minecraft:{item}"
+                    },
+                    "result": {
+                        "id": f"minecraft:{item}_pressure_plate",
+                        "count": 9
+                    }
                 }
-            }
+            elif pack_format_values[minecraft_version] == 71:
+                # 1.21.5 formatting
+                recipes["pressure_plate"] = {
+                    "type": "minecraft:stonecutting",
+                    "ingredient": [
+                        f"minecraft:{item}_planks" if item in minecraft_recipe_overrides[
+                            "pressure_plate"]["wooden"] else f"minecraft:{item}"
+                    ],
+                    "result": {
+                        "id": f"minecraft:{item}_pressure_plate",
+                        "count": 9
+                    }
+                }
 
             # Write to new file/overwrite to existing file in Minecraft namespace
             with open(f"./minecraft_versions/{minecraft_version}/data/minecraft/recipe/{item}_pressure_plate.json", 'w') as json_file:
-                json.dump(recipe_types["pressure_plate"], json_file, indent=4)
+                json.dump(recipes["pressure_plate"], json_file, indent=4)
 
 print("Finished")
