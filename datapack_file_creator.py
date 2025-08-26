@@ -1,5 +1,14 @@
 import json
 
+# Minecraft version (1.16.5, 1.21.1, etc.)
+minecraft_version = "1.21.1"
+
+# Minecraft version dictionary for data pack format number
+pack_format_values = {
+    "1.21.1": 48,
+    "1.21.5": 71
+}
+
 # Namespace variable for datapack
 datapack_namespace = "bps_stairs_and_slabs"
 
@@ -99,6 +108,18 @@ minecraft_recipe_overrides = {
         ]
     }
 }
+
+# If using version 1.21.4+, then add blocks from "Garden Awakens" update
+if pack_format_values[minecraft_version] >= 61:
+    custom_recipe_items["wooden"].append("pale_oak")
+    custom_recipe_items["non-wooden"].append("resin_brick")
+    minecraft_recipe_overrides["pressure_plate"]["wooden"].append("pale_oak")
+
+
+
+
+
+
 
 # TODO: delete this later
 test_list = {
@@ -343,7 +364,7 @@ for item_type, item_list in custom_recipe_items.items(): # TODO: change to custo
             sorted_recipe = {key: recipe[key] for key in sorted_keys}
             
             # Write to new file/overwrite to existing file
-            with open(f"./data/{datapack_namespace}/recipe/{recipe_file_name}.json", 'w') as json_file:
+            with open(f"./minecraft_versions/{minecraft_version}/data/{datapack_namespace}/recipe/{recipe_file_name}.json", 'w') as json_file:
                 json.dump(sorted_recipe, json_file, indent=4)
 
             # **************************************************
@@ -352,7 +373,7 @@ for item_type, item_list in custom_recipe_items.items(): # TODO: change to custo
                 # Replace vanilla result from 4 to 8 stairs to match datapack
                 sorted_recipe["pattern"] = ["#  ", "## ", "###"]
                 sorted_recipe["result"]["count"] = 8
-                with open(f"./data/minecraft/recipe/{item}_stairs.json", 'w') as json_file:
+                with open(f"./minecraft_versions/{minecraft_version}/data/minecraft/recipe/{item}_stairs.json", 'w') as json_file:
                     json.dump(sorted_recipe, json_file, indent=4)
 
         # **************************************************
@@ -371,5 +392,5 @@ for item_type, item_list in custom_recipe_items.items(): # TODO: change to custo
             }
 
             # Write to new file/overwrite to existing file in Minecraft namespace
-            with open(f"./data/minecraft/recipe/{item}_pressure_plate.json", 'w') as json_file:
+            with open(f"./minecraft_versions/{minecraft_version}/data/minecraft/recipe/{item}_pressure_plate.json", 'w') as json_file:
                 json.dump(recipe_types["pressure_plate"], json_file, indent=4)
