@@ -1,9 +1,10 @@
 import json
 
 # Minecraft version (1.16.5, 1.21.1, etc.)
+# Set each time you want to generate for specific version
 minecraft_version = "1.21.1"
 
-# Minecraft version dictionary for data pack format number
+# Dictionary for data pack format number based on Minecraft version
 pack_format_values = {
     "1.21.1": 48,
     "1.21.5": 71
@@ -11,6 +12,11 @@ pack_format_values = {
 
 # Namespace variable for datapack
 datapack_namespace = "bps_stairs_and_slabs"
+
+
+# ****************************************************************************************************
+# ITEM LISTS
+# ****************************************************************************************************
 
 # Master list of all items that need custom recipes
 custom_recipe_items = {
@@ -111,37 +117,17 @@ minecraft_recipe_overrides = {
 
 # If using version 1.21.4+, then add blocks from "Garden Awakens" update
 if pack_format_values[minecraft_version] >= 61:
-    custom_recipe_items["wooden"].append("pale_oak")
     custom_recipe_items["non-wooden"].append("resin_brick")
+    custom_recipe_items["wooden"].append("pale_oak")
     minecraft_recipe_overrides["pressure_plate"]["wooden"].append("pale_oak")
 
 
-
-
-
-
-
-# TODO: delete this later
-test_list = {
-    "wooden": ["acacia"],
-    "non-wooden": [
-        "brick",
-        "deepslate_tile",
-        "polished_blackstone",
-        "purpur",
-        "quartz",
-        "smooth_stone",
-        "cut_copper",
-        "waxed_exposed_cut_copper",
-        "waxed_oxidized_cut_copper",
-        "waxed_weathered_cut_copper",
-        "weathered_cut_copper"
-    ]
-}
-
+# ****************************************************************************************************
+# RECIPE SYNTAX DEFINITIONS
+# ****************************************************************************************************
 
 # Cycle through item types: wooden and non-wooden
-for item_type, item_list in custom_recipe_items.items(): # TODO: change to custom_recipe_items | test_list
+for item_type, item_list in custom_recipe_items.items():
     # Cycle through each item you want custom recipes for: wood, stone, etc
     for item in item_list:
         # Dictionary to hold the item recipe types and their corresponding JSON data for recipe files
