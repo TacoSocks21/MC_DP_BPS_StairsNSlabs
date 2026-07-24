@@ -135,7 +135,7 @@ minecraft_recipe_overrides = {
 }
 
 # If using version 1.21.4+, then add blocks from "Garden Awakens" update
-if pack_format_values[minecraft_version] >= 61 | pack_format_values[backport_mod_minecraft_version] >= 61:
+if pack_format_values[minecraft_version] >= 61 or pack_format_values[backport_mod_minecraft_version] >= 61:
     custom_recipe_items["minecraft"]["non-wooden"].append("resin_brick")
     custom_recipe_items["minecraft"]["wooden"].append("pale_oak")
     minecraft_recipe_overrides["minecraft"]["pressure_plate"]["wooden"].append(
@@ -148,6 +148,7 @@ for namespace, namespace_item_types in custom_recipe_items.items():
     for item_type, item_list in namespace_item_types.items():
         # Cycle through each item you want custom recipes for: wood, stone, etc
         for item in item_list:
+            print(namespace, item_type, item)
             # Dictionary to hold the item recipe types and their corresponding JSON data for recipe files
             recipes = get_recipes(
                 namespace, item_type, item, pack_format_values, minecraft_version, slab_only_list
@@ -223,8 +224,6 @@ for namespace, namespace_item_types in custom_recipe_items.items():
                             "count": 9
                         }
                     }
-
-                print(namespace, item)
 
                 # Write to new file/overwrite to existing file in Minecraft namespace
                 with open(f"./minecraft_versions/{minecraft_version}/data/{namespace}/recipe/{item}_pressure_plate.json", 'w') as json_file:
