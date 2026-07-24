@@ -9,11 +9,11 @@
     ],
     "key": {
         "#": {
-            "item": "minecraft:saccharine_planks"
+            "item": "cobblemon:saccharine_planks"
         }
     },
     "result": {
-        "id": "minecraft:saccharine_stairs",
+        "id": "cobblemon:saccharine_stairs",
         "count": 8
     }
 }
