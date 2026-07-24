@@ -1,0 +1,10 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+        "item": "minecraft:saccharine_planks"
+    },
+    "result": {
+        "id": "minecraft:saccharine_pressure_plate",
+        "count": 9
+    }
+}

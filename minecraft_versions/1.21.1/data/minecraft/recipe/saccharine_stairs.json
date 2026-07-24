@@ -1,7 +1,7 @@
 {
     "type": "minecraft:crafting_shaped",
     "category": "building",
-    "group": "stone_brick_stairs",
+    "group": "wooden_stairs",
     "pattern": [
         "#  ",
         "## ",
@@ -9,11 +9,11 @@
     ],
     "key": {
         "#": {
-            "item": "minecraft:stone_bricks"
+            "item": "minecraft:saccharine_planks"
         }
     },
     "result": {
-        "id": "minecraft:stone_brick_stairs",
+        "id": "minecraft:saccharine_stairs",
         "count": 8
     }
 }
