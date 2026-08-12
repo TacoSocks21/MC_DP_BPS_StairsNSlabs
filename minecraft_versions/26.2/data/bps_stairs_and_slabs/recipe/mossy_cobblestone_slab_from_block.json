@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "building",
+    "group": "mossy_cobblestone_slab",
+    "pattern": [
+        "##"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:mossy_cobblestone"
+        }
+    },
+    "result": {
+        "id": "minecraft:mossy_cobblestone_slab",
+        "count": 4
+    }
+}

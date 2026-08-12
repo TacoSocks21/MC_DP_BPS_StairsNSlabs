@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "building",
+    "group": "tuff_block",
+    "pattern": [
+        "##",
+        "##"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:tuff_slab"
+        }
+    },
+    "result": {
+        "id": "minecraft:tuff",
+        "count": 2
+    }
+}

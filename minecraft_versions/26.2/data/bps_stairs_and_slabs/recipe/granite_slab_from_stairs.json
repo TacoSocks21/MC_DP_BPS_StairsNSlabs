@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "building",
+    "group": "granite_slab",
+    "pattern": [
+        "##"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:granite_stairs"
+        }
+    },
+    "result": {
+        "id": "minecraft:granite_slab",
+        "count": 3
+    }
+}

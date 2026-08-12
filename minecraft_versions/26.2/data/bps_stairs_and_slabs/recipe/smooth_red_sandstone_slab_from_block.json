@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "building",
+    "group": "smooth_red_sandstone_slab",
+    "pattern": [
+        "##"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:smooth_red_sandstone"
+        }
+    },
+    "result": {
+        "id": "minecraft:smooth_red_sandstone_slab",
+        "count": 4
+    }
+}

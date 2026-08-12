@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "building",
+    "group": "end_stone_brick_slab",
+    "pattern": [
+        "##"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:end_stone_bricks"
+        }
+    },
+    "result": {
+        "id": "minecraft:end_stone_brick_slab",
+        "count": 4
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "building",
+    "group": "polished_deepslate_block",
+    "pattern": [
+        "##",
+        "##"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:polished_deepslate_stairs"
+        }
+    },
+    "result": {
+        "id": "minecraft:polished_deepslate",
+        "count": 3
+    }
+}

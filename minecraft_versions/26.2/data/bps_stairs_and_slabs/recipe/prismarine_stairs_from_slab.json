@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "building",
+    "group": "prismarine_stairs",
+    "pattern": [
+        "# ",
+        "##"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:prismarine_slab"
+        }
+    },
+    "result": {
+        "id": "minecraft:prismarine_stairs",
+        "count": 2
+    }
+}

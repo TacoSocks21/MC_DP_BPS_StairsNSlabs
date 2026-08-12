@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "building",
+    "group": "purpur_slab",
+    "pattern": [
+        "##"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:purpur_stairs"
+        }
+    },
+    "result": {
+        "id": "minecraft:purpur_slab",
+        "count": 3
+    }
+}

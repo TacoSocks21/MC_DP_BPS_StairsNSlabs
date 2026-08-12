@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "building",
+    "group": "polished_tuff_slab",
+    "pattern": [
+        "##"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:polished_tuff"
+        }
+    },
+    "result": {
+        "id": "minecraft:polished_tuff_slab",
+        "count": 4
+    }
+}

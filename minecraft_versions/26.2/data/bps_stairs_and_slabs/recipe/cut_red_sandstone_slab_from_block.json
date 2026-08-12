@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "building",
+    "group": "cut_red_sandstone_slab",
+    "pattern": [
+        "##"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:cut_red_sandstone"
+        }
+    },
+    "result": {
+        "id": "minecraft:cut_red_sandstone_slab",
+        "count": 4
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "building",
+    "group": "sandstone_slab",
+    "pattern": [
+        "##"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:sandstone_stairs"
+        }
+    },
+    "result": {
+        "id": "minecraft:sandstone_slab",
+        "count": 3
+    }
+}

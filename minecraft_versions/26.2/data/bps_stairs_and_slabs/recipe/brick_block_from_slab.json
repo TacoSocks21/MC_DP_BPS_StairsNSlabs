@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "building",
+    "group": "brick_block",
+    "pattern": [
+        "##",
+        "##"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:brick_slab"
+        }
+    },
+    "result": {
+        "id": "minecraft:bricks",
+        "count": 2
+    }
+}

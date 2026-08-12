@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "building",
+    "group": "deepslate_tile_stairs",
+    "pattern": [
+        "#  ",
+        "## ",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:deepslate_tiles"
+        }
+    },
+    "result": {
+        "id": "minecraft:deepslate_tile_stairs",
+        "count": 8
+    }
+}
