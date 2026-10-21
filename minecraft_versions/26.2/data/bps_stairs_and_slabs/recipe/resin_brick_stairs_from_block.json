@@ -7,9 +7,9 @@
         "##"
     ],
     "key": {
-        "#": {
-            "item": "minecraft:resin_bricks"
-        }
+        "#": [
+            "minecraft:resin_bricks"
+        ]
     },
     "result": {
         "id": "minecraft:resin_brick_stairs",

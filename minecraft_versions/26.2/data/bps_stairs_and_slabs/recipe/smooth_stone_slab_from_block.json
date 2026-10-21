@@ -6,9 +6,9 @@
         "##"
     ],
     "key": {
-        "#": {
-            "item": "minecraft:smooth_stone"
-        }
+        "#": [
+            "minecraft:smooth_stone"
+        ]
     },
     "result": {
         "id": "minecraft:smooth_stone_slab",

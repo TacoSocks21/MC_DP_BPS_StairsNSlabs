@@ -6,9 +6,9 @@
         "##"
     ],
     "key": {
-        "#": {
-            "item": "minecraft:diorite"
-        }
+        "#": [
+            "minecraft:diorite"
+        ]
     },
     "result": {
         "id": "minecraft:diorite_slab",

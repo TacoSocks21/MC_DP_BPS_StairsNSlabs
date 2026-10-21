@@ -6,9 +6,9 @@
         "##"
     ],
     "key": {
-        "#": {
-            "item": "minecraft:mangrove_stairs"
-        }
+        "#": [
+            "minecraft:mangrove_stairs"
+        ]
     },
     "result": {
         "id": "minecraft:mangrove_slab",

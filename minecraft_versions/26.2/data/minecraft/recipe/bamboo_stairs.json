@@ -8,9 +8,9 @@
         "###"
     ],
     "key": {
-        "#": {
-            "item": "minecraft:bamboo_planks"
-        }
+        "#": [
+            "minecraft:bamboo_planks"
+        ]
     },
     "result": {
         "id": "minecraft:bamboo_stairs",

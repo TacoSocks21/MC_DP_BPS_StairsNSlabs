@@ -6,9 +6,9 @@
         "##"
     ],
     "key": {
-        "#": {
-            "item": "minecraft:purpur_stairs"
-        }
+        "#": [
+            "minecraft:purpur_stairs"
+        ]
     },
     "result": {
         "id": "minecraft:purpur_slab",

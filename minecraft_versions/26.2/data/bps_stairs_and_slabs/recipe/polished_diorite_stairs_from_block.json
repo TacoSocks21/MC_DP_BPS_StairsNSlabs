@@ -7,9 +7,9 @@
         "##"
     ],
     "key": {
-        "#": {
-            "item": "minecraft:polished_diorite"
-        }
+        "#": [
+            "minecraft:polished_diorite"
+        ]
     },
     "result": {
         "id": "minecraft:polished_diorite_stairs",

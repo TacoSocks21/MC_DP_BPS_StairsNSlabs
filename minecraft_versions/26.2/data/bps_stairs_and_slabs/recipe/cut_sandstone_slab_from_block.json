@@ -6,9 +6,9 @@
         "##"
     ],
     "key": {
-        "#": {
-            "item": "minecraft:cut_sandstone"
-        }
+        "#": [
+            "minecraft:cut_sandstone"
+        ]
     },
     "result": {
         "id": "minecraft:cut_sandstone_slab",

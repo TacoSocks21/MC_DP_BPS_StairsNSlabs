@@ -6,9 +6,9 @@
         "##"
     ],
     "key": {
-        "#": {
-            "item": "minecraft:dark_prismarine"
-        }
+        "#": [
+            "minecraft:dark_prismarine"
+        ]
     },
     "result": {
         "id": "minecraft:dark_prismarine_slab",

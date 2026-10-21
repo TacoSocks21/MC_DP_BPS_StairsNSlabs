@@ -6,9 +6,9 @@
         "##"
     ],
     "key": {
-        "#": {
-            "item": "minecraft:polished_granite_stairs"
-        }
+        "#": [
+            "minecraft:polished_granite_stairs"
+        ]
     },
     "result": {
         "id": "minecraft:polished_granite_slab",

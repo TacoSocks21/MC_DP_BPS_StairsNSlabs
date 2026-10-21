@@ -6,9 +6,9 @@
         "##"
     ],
     "key": {
-        "#": {
-            "item": "minecraft:granite_stairs"
-        }
+        "#": [
+            "minecraft:granite_stairs"
+        ]
     },
     "result": {
         "id": "minecraft:granite_slab",

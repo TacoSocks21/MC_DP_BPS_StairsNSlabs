@@ -6,9 +6,9 @@
         "##"
     ],
     "key": {
-        "#": {
-            "item": "minecraft:prismarine_brick_stairs"
-        }
+        "#": [
+            "minecraft:prismarine_brick_stairs"
+        ]
     },
     "result": {
         "id": "minecraft:prismarine_brick_slab",

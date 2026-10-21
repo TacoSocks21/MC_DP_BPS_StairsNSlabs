@@ -6,9 +6,9 @@
         "##"
     ],
     "key": {
-        "#": {
-            "item": "minecraft:bamboo_mosaic"
-        }
+        "#": [
+            "minecraft:bamboo_mosaic"
+        ]
     },
     "result": {
         "id": "minecraft:bamboo_mosaic_slab",

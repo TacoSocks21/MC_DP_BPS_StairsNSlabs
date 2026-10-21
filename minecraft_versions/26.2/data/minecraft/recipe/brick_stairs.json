@@ -8,9 +8,9 @@
         "###"
     ],
     "key": {
-        "#": {
-            "item": "minecraft:bricks"
-        }
+        "#": [
+            "minecraft:bricks"
+        ]
     },
     "result": {
         "id": "minecraft:brick_stairs",

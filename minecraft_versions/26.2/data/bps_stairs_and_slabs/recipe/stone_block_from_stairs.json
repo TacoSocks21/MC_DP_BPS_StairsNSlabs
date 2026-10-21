@@ -7,9 +7,9 @@
         "##"
     ],
     "key": {
-        "#": {
-            "item": "minecraft:stone_stairs"
-        }
+        "#": [
+            "minecraft:stone_stairs"
+        ]
     },
     "result": {
         "id": "minecraft:stone",

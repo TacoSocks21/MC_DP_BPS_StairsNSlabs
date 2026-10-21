@@ -8,9 +8,9 @@
         "###"
     ],
     "key": {
-        "#": {
-            "item": "minecraft:mangrove_planks"
-        }
+        "#": [
+            "minecraft:mangrove_planks"
+        ]
     },
     "result": {
         "id": "minecraft:mangrove_stairs",

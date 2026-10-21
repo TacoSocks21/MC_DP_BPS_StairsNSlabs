@@ -6,9 +6,9 @@
         "##"
     ],
     "key": {
-        "#": {
-            "item": "minecraft:dark_oak_stairs"
-        }
+        "#": [
+            "minecraft:dark_oak_stairs"
+        ]
     },
     "result": {
         "id": "minecraft:dark_oak_slab",

@@ -7,9 +7,9 @@
         "##"
     ],
     "key": {
-        "#": {
-            "item": "minecraft:mossy_cobblestone_slab"
-        }
+        "#": [
+            "minecraft:mossy_cobblestone_slab"
+        ]
     },
     "result": {
         "id": "minecraft:mossy_cobblestone",

@@ -8,9 +8,9 @@
         "###"
     ],
     "key": {
-        "#": {
-            "item": "minecraft:mud_bricks"
-        }
+        "#": [
+            "minecraft:mud_bricks"
+        ]
     },
     "result": {
         "id": "minecraft:mud_brick_stairs",

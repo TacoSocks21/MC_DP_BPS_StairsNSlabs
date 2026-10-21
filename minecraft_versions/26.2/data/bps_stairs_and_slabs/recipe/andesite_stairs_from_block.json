@@ -7,9 +7,9 @@
         "##"
     ],
     "key": {
-        "#": {
-            "item": "minecraft:andesite"
-        }
+        "#": [
+            "minecraft:andesite"
+        ]
     },
     "result": {
         "id": "minecraft:andesite_stairs",

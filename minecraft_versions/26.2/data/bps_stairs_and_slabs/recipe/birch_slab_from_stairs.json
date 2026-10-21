@@ -6,9 +6,9 @@
         "##"
     ],
     "key": {
-        "#": {
-            "item": "minecraft:birch_stairs"
-        }
+        "#": [
+            "minecraft:birch_stairs"
+        ]
     },
     "result": {
         "id": "minecraft:birch_slab",

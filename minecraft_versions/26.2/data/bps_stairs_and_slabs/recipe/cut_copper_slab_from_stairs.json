@@ -6,9 +6,9 @@
         "##"
     ],
     "key": {
-        "#": {
-            "item": "minecraft:cut_copper_stairs"
-        }
+        "#": [
+            "minecraft:cut_copper_stairs"
+        ]
     },
     "result": {
         "id": "minecraft:cut_copper_slab",

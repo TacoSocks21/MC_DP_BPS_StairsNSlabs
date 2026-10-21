@@ -8,9 +8,9 @@
         "###"
     ],
     "key": {
-        "#": {
-            "item": "minecraft:polished_blackstone"
-        }
+        "#": [
+            "minecraft:polished_blackstone"
+        ]
     },
     "result": {
         "id": "minecraft:polished_blackstone_stairs",
