@@ -1,5 +1,5 @@
-def get_recipes(item_type, item, pack_format_values, minecraft_version, slab_only_list) -> dict:
-    recipe_types = {}
+def get_recipes(namespace, item_type, item, pack_format_values, minecraft_version, slab_only_list) -> dict:
+    item_recipes = {}
 
     # ****************************************************************************************************
     # 1.21.1 recipe syntax
@@ -7,7 +7,7 @@ def get_recipes(item_type, item, pack_format_values, minecraft_version, slab_onl
     if pack_format_values[minecraft_version] == 48:
         # **************************************************
         # Create slab from blocks
-        recipe_types["slab_from_block"] = {
+        item_recipes["slab_from_block"] = {
             "type": "minecraft:crafting_shaped",
             "category": "building",
             "pattern": [
@@ -15,11 +15,11 @@ def get_recipes(item_type, item, pack_format_values, minecraft_version, slab_onl
             ],
             "key": {
                 "#": {
-                    "item": f"minecraft:{item}_planks" if item_type == "wooden" else f"minecraft:{item}"
+                    "item": f"{namespace}:{item}_planks" if item_type == "wooden" else f"{namespace}:{item}"
                 }
             },
             "result": {
-                "id": f"minecraft:{item}_slab",
+                "id": f"{namespace}:{item}_slab",
                 "count": 4
             }
         }
@@ -28,7 +28,7 @@ def get_recipes(item_type, item, pack_format_values, minecraft_version, slab_onl
         if item not in slab_only_list:
             # **************************************************
             # Create slab from stairs (only if has stair recipe)
-            recipe_types["slab_from_stairs"] = {
+            item_recipes["slab_from_stairs"] = {
                 "type": "minecraft:crafting_shaped",
                 "category": "building",
                 "pattern": [
@@ -36,18 +36,18 @@ def get_recipes(item_type, item, pack_format_values, minecraft_version, slab_onl
                 ],
                 "key": {
                     "#": {
-                        "item": f"minecraft:{item}_stairs"
+                        "item": f"{namespace}:{item}_stairs"
                     }
                 },
                 "result": {
-                    "id": f"minecraft:{item}_slab",
+                    "id": f"{namespace}:{item}_slab",
                     "count": 3
                 }
             }
 
             # **************************************************
             # Create stairs from block (only if has stair recipe)
-            recipe_types["stairs_from_block"] = {
+            item_recipes["stairs_from_block"] = {
                 "type": "minecraft:crafting_shaped",
                 "category": "building",
                 "pattern": [
@@ -56,18 +56,18 @@ def get_recipes(item_type, item, pack_format_values, minecraft_version, slab_onl
                 ],
                 "key": {
                     "#": {
-                        "item": f"minecraft:{item}_planks" if item_type == "wooden" else f"minecraft:{item}"
+                        "item": f"{namespace}:{item}_planks" if item_type == "wooden" else f"{namespace}:{item}"
                     }
                 },
                 "result": {
-                    "id": f"minecraft:{item}_stairs",
+                    "id": f"{namespace}:{item}_stairs",
                     "count": 4
                 }
             }
 
             # **************************************************
             # Create stairs from slab (only if has stair recipe)
-            recipe_types["stairs_from_slab"] = {
+            item_recipes["stairs_from_slab"] = {
                 "type": "minecraft:crafting_shaped",
                 "category": "building",
                 "pattern": [
@@ -76,18 +76,18 @@ def get_recipes(item_type, item, pack_format_values, minecraft_version, slab_onl
                 ],
                 "key": {
                     "#": {
-                        "item": f"minecraft:{item}_slab"
+                        "item": f"{namespace}:{item}_slab"
                     }
                 },
                 "result": {
-                    "id": f"minecraft:{item}_stairs",
+                    "id": f"{namespace}:{item}_stairs",
                     "count": 2
                 }
             }
 
             # **************************************************
             # Create block from stairs (only if has stair recipe)
-            recipe_types["block_from_stairs"] = {
+            item_recipes["block_from_stairs"] = {
                 "type": "minecraft:crafting_shaped",
                 "category": "building",
                 "pattern": [
@@ -96,18 +96,18 @@ def get_recipes(item_type, item, pack_format_values, minecraft_version, slab_onl
                 ],
                 "key": {
                     "#": {
-                        "item": f"minecraft:{item}_stairs"
+                        "item": f"{namespace}:{item}_stairs"
                     }
                 },
                 "result": {
-                    "id": f"minecraft:{item}_planks" if item_type == "wooden" else f"minecraft:{item}",
+                    "id": f"{namespace}:{item}_planks" if item_type == "wooden" else f"{namespace}:{item}",
                     "count": 3
                 }
             }
 
         # **************************************************
         # Create block from slab
-        recipe_types["block_from_slab"] = {
+        item_recipes["block_from_slab"] = {
             "type": "minecraft:crafting_shaped",
             "category": "building",
             "pattern": [
@@ -116,11 +116,11 @@ def get_recipes(item_type, item, pack_format_values, minecraft_version, slab_onl
             ],
             "key": {
                 "#": {
-                    "item": f"minecraft:{item}_slab"
+                    "item": f"{namespace}:{item}_slab"
                 }
             },
             "result": {
-                "id": f"minecraft:{item}_planks" if item_type == "wooden" else f"minecraft:{item}",
+                "id": f"{namespace}:{item}_planks" if item_type == "wooden" else f"{namespace}:{item}",
                 "count": 2
             }
         }
@@ -129,35 +129,35 @@ def get_recipes(item_type, item, pack_format_values, minecraft_version, slab_onl
         # Special conditions for purpur and quartz blocks, since all variants make slabs/stairs
         if item in ["purpur", "quartz"]:
             # Make purpur/quarts stairs craftable from blocks or pillars
-            recipe_types["stairs_from_block"]["key"]["#"] = [
+            item_recipes["stairs_from_block"]["key"]["#"] = [
                 {"item": f"minecraft:{item}_block"},
                 {"item": f"minecraft:{item}_pillar"}
             ]
 
             # Make purpur/quarts slabs craftable from blocks or pillars
-            recipe_types["slab_from_block"]["key"]["#"] = [
+            item_recipes["slab_from_block"]["key"]["#"] = [
                 {"item": f"minecraft:{item}_block"},
                 {"item": f"minecraft:{item}_pillar"}
             ]
 
             if item == "quartz":
                 # Add chiseled variant for quartz recipes
-                recipe_types["stairs_from_block"]["key"]["#"].append(
+                item_recipes["stairs_from_block"]["key"]["#"].append(
                     {"item": "minecraft:chiseled_quartz_block"})
-                recipe_types["slab_from_block"]["key"]["#"].append(
+                item_recipes["slab_from_block"]["key"]["#"].append(
                     {"item": "minecraft:chiseled_quartz_block"})
 
             # Append "_block" keyword to recipe result for purpur and quartz items
-            recipe_types["block_from_stairs"]["result"]["id"] = f"minecraft:{item}_block"
-            recipe_types["block_from_slab"]["result"]["id"] = f"minecraft:{item}_block"
+            item_recipes["block_from_stairs"]["result"]["id"] = f"minecraft:{item}_block"
+            item_recipes["block_from_slab"]["result"]["id"] = f"minecraft:{item}_block"
 
         # **************************************************
         # Append "s" to brick and tile items
         if item[-5:] == "brick" or item[-4:] == "tile":
-            recipe_types["stairs_from_block"]["key"]["#"]["item"] += "s"
-            recipe_types["slab_from_block"]["key"]["#"]["item"] += "s"
-            recipe_types["block_from_stairs"]["result"]["id"] += "s"
-            recipe_types["block_from_slab"]["result"]["id"] += "s"
+            item_recipes["stairs_from_block"]["key"]["#"]["item"] += "s"
+            item_recipes["slab_from_block"]["key"]["#"]["item"] += "s"
+            item_recipes["block_from_stairs"]["result"]["id"] += "s"
+            item_recipes["block_from_slab"]["result"]["id"] += "s"
 
     # ****************************************************************************************************
     # 1.21.5 recipe syntax
@@ -165,7 +165,7 @@ def get_recipes(item_type, item, pack_format_values, minecraft_version, slab_onl
     elif pack_format_values[minecraft_version] == 71:
         # **************************************************
         # Create slab from blocks
-        recipe_types["slab_from_block"] = {
+        item_recipes["slab_from_block"] = {
             "type": "minecraft:crafting_shaped",
             "category": "building",
             "pattern": [
@@ -173,11 +173,11 @@ def get_recipes(item_type, item, pack_format_values, minecraft_version, slab_onl
             ],
             "key": {
                 "#": [
-                    f"minecraft:{item}_planks" if item_type == "wooden" else f"minecraft:{item}"
+                    f"{namespace}:{item}_planks" if item_type == "wooden" else f"{namespace}:{item}"
                 ]
             },
             "result": {
-                "id": f"minecraft:{item}_slab",
+                "id": f"{namespace}:{item}_slab",
                 "count": 4
             }
         }
@@ -186,7 +186,7 @@ def get_recipes(item_type, item, pack_format_values, minecraft_version, slab_onl
         if item not in slab_only_list:
             # **************************************************
             # Create slab from stairs (only if has stair recipe)
-            recipe_types["slab_from_stairs"] = {
+            item_recipes["slab_from_stairs"] = {
                 "type": "minecraft:crafting_shaped",
                 "category": "building",
                 "pattern": [
@@ -194,18 +194,18 @@ def get_recipes(item_type, item, pack_format_values, minecraft_version, slab_onl
                 ],
                 "key": {
                     "#": [
-                        f"minecraft:{item}_stairs"
+                        f"{namespace}:{item}_stairs"
                     ]
                 },
                 "result": {
-                    "id": f"minecraft:{item}_slab",
+                    "id": f"{namespace}:{item}_slab",
                     "count": 3
                 }
             }
 
             # **************************************************
             # Create stairs from block (only if has stair recipe)
-            recipe_types["stairs_from_block"] = {
+            item_recipes["stairs_from_block"] = {
                 "type": "minecraft:crafting_shaped",
                 "category": "building",
                 "pattern": [
@@ -214,18 +214,18 @@ def get_recipes(item_type, item, pack_format_values, minecraft_version, slab_onl
                 ],
                 "key": {
                     "#": [
-                        f"minecraft:{item}_planks" if item_type == "wooden" else f"minecraft:{item}"
+                        f"{namespace}:{item}_planks" if item_type == "wooden" else f"{namespace}:{item}"
                     ]
                 },
                 "result": {
-                    "id": f"minecraft:{item}_stairs",
+                    "id": f"{namespace}:{item}_stairs",
                     "count": 4
                 }
             }
 
             # **************************************************
             # Create stairs from slab (only if has stair recipe)
-            recipe_types["stairs_from_slab"] = {
+            item_recipes["stairs_from_slab"] = {
                 "type": "minecraft:crafting_shaped",
                 "category": "building",
                 "pattern": [
@@ -234,18 +234,18 @@ def get_recipes(item_type, item, pack_format_values, minecraft_version, slab_onl
                 ],
                 "key": {
                     "#": [
-                        f"minecraft:{item}_slab"
+                        f"{namespace}:{item}_slab"
                     ]
                 },
                 "result": {
-                    "id": f"minecraft:{item}_stairs",
+                    "id": f"{namespace}:{item}_stairs",
                     "count": 2
                 }
             }
 
             # **************************************************
             # Create block from stairs (only if has stair recipe)
-            recipe_types["block_from_stairs"] = {
+            item_recipes["block_from_stairs"] = {
                 "type": "minecraft:crafting_shaped",
                 "category": "building",
                 "pattern": [
@@ -254,18 +254,18 @@ def get_recipes(item_type, item, pack_format_values, minecraft_version, slab_onl
                 ],
                 "key": {
                     "#": [
-                        f"minecraft:{item}_stairs"
+                        f"{namespace}:{item}_stairs"
                     ]
                 },
                 "result": {
-                    "id": f"minecraft:{item}_planks" if item_type == "wooden" else f"minecraft:{item}",
+                    "id": f"{namespace}:{item}_planks" if item_type == "wooden" else f"{namespace}:{item}",
                     "count": 3
                 }
             }
 
         # **************************************************
         # Create block from slab
-        recipe_types["block_from_slab"] = {
+        item_recipes["block_from_slab"] = {
             "type": "minecraft:crafting_shaped",
             "category": "building",
             "pattern": [
@@ -274,11 +274,11 @@ def get_recipes(item_type, item, pack_format_values, minecraft_version, slab_onl
             ],
             "key": {
                 "#": [
-                    f"minecraft:{item}_slab"
+                    f"{namespace}:{item}_slab"
                 ]
             },
             "result": {
-                "id": f"minecraft:{item}_planks" if item_type == "wooden" else f"minecraft:{item}",
+                "id": f"{namespace}:{item}_planks" if item_type == "wooden" else f"{namespace}:{item}",
                 "count": 2
             }
         }
@@ -287,35 +287,35 @@ def get_recipes(item_type, item, pack_format_values, minecraft_version, slab_onl
         # Special conditions for purpur and quartz blocks, since all variants make slabs/stairs
         if item in ["purpur", "quartz"]:
             # Make purpur/quarts stairs craftable from blocks or pillars
-            recipe_types["stairs_from_block"]["key"]["#"] = [
+            item_recipes["stairs_from_block"]["key"]["#"] = [
                 f"minecraft:{item}_block",
                 f"minecraft:{item}_pillar"
             ]
 
             # Make purpur/quarts slabs craftable from blocks or pillars
-            recipe_types["slab_from_block"]["key"]["#"] = [
+            item_recipes["slab_from_block"]["key"]["#"] = [
                 f"minecraft:{item}_block",
                 f"minecraft:{item}_pillar"
             ]
 
             if item == "quartz":
                 # Add chiseled variant for quartz recipes
-                recipe_types["stairs_from_block"]["key"]["#"].append(
+                item_recipes["stairs_from_block"]["key"]["#"].append(
                     "minecraft:chiseled_quartz_block")
-                recipe_types["slab_from_block"]["key"]["#"].append(
+                item_recipes["slab_from_block"]["key"]["#"].append(
                     "minecraft:chiseled_quartz_block")
 
             # Append "_block" keyword to recipe result for purpur and quartz items
-            recipe_types["block_from_stairs"]["result"]["id"] = f"minecraft:{item}_block"
-            recipe_types["block_from_slab"]["result"]["id"] = f"minecraft:{item}_block"
+            item_recipes["block_from_stairs"]["result"]["id"] = f"minecraft:{item}_block"
+            item_recipes["block_from_slab"]["result"]["id"] = f"minecraft:{item}_block"
 
         # **************************************************
         # Append "s" to brick and tile items
         if item[-5:] == "brick" or item[-4:] == "tile":
-            recipe_types["stairs_from_block"]["key"]["#"][0] += "s"
-            recipe_types["slab_from_block"]["key"]["#"][0] += "s"
-            recipe_types["block_from_stairs"]["result"]["id"] += "s"
-            recipe_types["block_from_slab"]["result"]["id"] += "s"
+            item_recipes["stairs_from_block"]["key"]["#"][0] += "s"
+            item_recipes["slab_from_block"]["key"]["#"][0] += "s"
+            item_recipes["block_from_stairs"]["result"]["id"] += "s"
+            item_recipes["block_from_slab"]["result"]["id"] += "s"
 
     # Return dictionary
-    return recipe_types
+    return item_recipes

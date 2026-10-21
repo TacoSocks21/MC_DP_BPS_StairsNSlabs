@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "building",
+    "group": "wooden_slab",
+    "pattern": [
+        "##"
+    ],
+    "key": {
+        "#": {
+            "item": "cobblemon:saccharine_stairs"
+        }
+    },
+    "result": {
+        "id": "cobblemon:saccharine_slab",
+        "count": 3
+    }
+}

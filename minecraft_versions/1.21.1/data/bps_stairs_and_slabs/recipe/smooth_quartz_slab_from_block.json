@@ -1,6 +1,7 @@
 {
     "type": "minecraft:crafting_shaped",
     "category": "building",
+    "group": "smooth_quartz_slab",
     "pattern": [
         "##"
     ],
